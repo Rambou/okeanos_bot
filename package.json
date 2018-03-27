@@ -1,0 +1,34 @@
+{
+  "name": "okeanos_bot",
+  "version": "1.0.0",
+  "description": "This is an automated bot using selenium to authenticate your account/accounts to Okeanos GRNET and retrieve some use info. The tool takes as input and array with your account/accounts. It generate a file with your account/s API Token keys, so you can use them later if you want.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rambou/okeanos_bot.git"
+  },
+  "keywords": [
+    "okeanos",
+    "grnet",
+    "bot",
+    "autologin",
+    "selenium"
+  ],
+  "author": "Nikoloas Bousios A.k.A. Rambou (nikolaos.bousios@rambou.gr)",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/Rambou/okeanos_bot/issues"
+  },
+  "homepage": "https://github.com/Rambou/okeanos_bot#readme",
+  "dependencies": {
+    "selenium-webdriver": "^4.0.0-alpha.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-google": "^0.9.1"
+  }
+}

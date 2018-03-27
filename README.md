@@ -1,5 +1,6 @@
 # Automate bot for GRNET's Okeanos
 This is an automated bot using selenium to authenticate your account/accounts to Okeanos GRNET and retrieve some use info. The tool takes as input and array with your account/accounts. It generate a file with your account/s API Token keys, so you can use them later if you want.  
+_**Note**: that this script will currently work for users from university of the aegean. If you are from another department it need a little bit of modification. (I promise it will be little :D )_
 
 # How to use
 IN order to use this tool you need to download a selenium driver. There are two ways in which you can use this tool. You can either run selenium with your browser locally or run it remotely.
