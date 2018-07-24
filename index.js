@@ -2,7 +2,7 @@ const {Builder, By, Key, until} = require('selenium-webdriver');
 const fs = require('fs');
 
 // read credentials from local file
-var Users = JSON.parse(fs.readFileSync('./credentials.json', "utf8"));
+var Users = JSON.parse(fs.readFileSync(process.env.CREDENTIALS_FILE || './credentials.json', "utf8"));
 
 var tokens = [];
 
@@ -14,7 +14,7 @@ for (const user in Users) {
 async function login(user) {
     console.log('Running for user: ' + Users[user].name);
     let driver = await
-        new Builder().forBrowser('firefox').usingServer('http://localhost:4444/wd/hub').build();
+        new Builder().forBrowser(process.env.BROWSER || 'firefox').usingServer(process.env.SELENIUM_SERVER || 'http://localhost:4444/wd/hub').build();
     let actions = driver.actions({bridge: true});
     try {
         // Invoke login button from okeanos website and wait until GRNET's AAI page load 
@@ -28,9 +28,9 @@ async function login(user) {
 
         var select = await driver.findElement(By.className('select2-selection select2-selection--single'));
 
-        await actions.click(select).sendKeys(user.organization, Key.ENTER).perform();
+        await actions.click(select).sendKeys(Users[user].organization, Key.ENTER).perform();
 
-        await  driver.findElement(By.xpath('/html/body/div/div[1]/div[2]/div/form/div[1]/div[2]/button'))
+        await  driver.findElement(By.xpath('//*[@id="idp_selection"]/div[1]/div[2]/button'))
             .sendKeys('webdriver', Key.ENTER);
         await  driver.wait(until.titleIs('Central Authentication Service'), 10000);
 
@@ -57,9 +57,8 @@ async function login(user) {
         await driver.get('https://accounts.okeanos.grnet.gr/ui/api_access');
 
         await driver.wait(until.elementLocated(By.name('auth_token')), 10000);
-
-        var token = await driver.findElement(By.id('dummy_auth_token'))
-            .getText();
+ 
+        var token = await driver.findElement(By.name('auth_token')).getAttribute('value');
 
         // pass a token property to user object
         Users[user].token = token;
@@ -67,7 +66,7 @@ async function login(user) {
 
         // write the updated users object with Token to the tokens.json file
         await fs.writeFile(
-            './tokens.json',
+            process.env.TOKENS_FILE || './tokens.json',
             JSON.stringify(tokens),
 
             function (err) {

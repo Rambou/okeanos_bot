@@ -33,3 +33,12 @@ Inside project a credentials.json is located where you should easily fill it wit
 ]
 ```
 **Organization** can be anything as long as the output of autocomplete dropdown in AAI return one result (organization you want to log onto).
+
+### ENV Variables
+Now the bot is configurable by using following ENV variables
+* **CREDENTIALS_FILE**=./credentials.json
+* **SELENIUM_SERVER**=http://localhost:4444/wd/hub
+* **BROWSER**=firefox
+* **TOKENS_FILE**=./tokens.json
+
+*set an env variable can be easy for example in bash => export BROWSER=chrome*
