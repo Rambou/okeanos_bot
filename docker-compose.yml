@@ -20,4 +20,3 @@ services:
       CREDENTIALS_FILE: /data/credentials.json
       SELENIUM_SERVER: http://selenium_chrome:4444/wd/hub
       BROWSER: chrome
-      TOKENS_FILE: /data/tokens.json
