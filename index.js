@@ -47,12 +47,18 @@ async function login(user) {
 
         await driver.findElement(By.xpath('//*[@id="submitForm"]'))
             .sendKeys('webdriver', Key.ENTER);
+
         // wait for okeanos dashboard to load
-        await driver.wait(until.titleIs('~okeanos Dashboard | Overview'), 10000)
+        try{
+            await driver.wait(until.titleIs('~okeanos Dashboard | Overview'), 10000);
+        }catch (e) {
+            var confirm = await driver.wait(until.elementLocated(By.name('confirm')), 3000)
             .catch(() => {
                 console.log('Authentication for user ' + Users[user].name + ' failed! :(');
             });
-
+            await confirm.sendKeys('webdriver', Key.ENTER); 
+        }
+        
         // retrieve user's token information
         await driver.get('https://accounts.okeanos.grnet.gr/ui/api_access');
 
