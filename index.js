@@ -64,9 +64,9 @@ async function login(user) {
         Users[user].token = token;
         await tokens.push(Users[user]);
 
-        // write the updated users object with Token to the tokens.json file
+        // write the updated users object with Token to the credentials.json file
         await fs.writeFile(
-            process.env.TOKENS_FILE || './tokens.json',
+            process.env.CREDENTIALS_FILE || './credentials.json',
             JSON.stringify(tokens),
 
             function (err) {

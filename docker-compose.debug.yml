@@ -1,0 +1,15 @@
+version: '2.1'
+
+services:
+  okeanos_bot:
+    image: okeanos_bot
+    build: .
+    environment:
+      NODE_ENV: development
+      CREDENTIALS_FILE: ./credentials.json
+      SELENIUM_SERVER: http://localhost:4444/wd/hub
+      BROWSER: firefox
+      TOKENS_FILE: ./tokens.json
+    ports:
+      - 9229:9229
+    command: node --inspect=0.0.0.0:9229 index.js

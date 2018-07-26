@@ -39,6 +39,12 @@ Now the bot is configurable by using following ENV variables
 * **CREDENTIALS_FILE**=./credentials.json
 * **SELENIUM_SERVER**=http://localhost:4444/wd/hub
 * **BROWSER**=firefox
-* **TOKENS_FILE**=./tokens.json
 
 *set an env variable can be easy for example in bash => export BROWSER=chrome*
+
+## Docker
+Okeanos bot has been "containarized" :p You can now run the docker-compose.yml which creates two services, okeanos_bot and selenium_chrom_standalone. Container also creates a virtual_folder in which you should put the credentials.json. Afer the successfull execution of container credentials file will be updated with the tokens inside.
+To compose serives in docker run
+```
+docker-compose up -d
+```
