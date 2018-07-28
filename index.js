@@ -65,9 +65,16 @@ async function login(user) {
         await driver.wait(until.elementLocated(By.name('auth_token')), 10000);
  
         var token = await driver.findElement(By.name('auth_token')).getAttribute('value');
+        
+        // retrieve Opestack API Username/password
+        var api_username = await driver.findElement(By.xpath('(//span[@class=\'user-data\'])[1]')).getText();
+        var api_password = await driver.findElement(By.xpath('(//span[@class=\'user-data\'])[2]')).getText();
 
-        // pass a token property to user object
+        // pass properties to user's object
         Users[user].token = token;
+        Users[user].api_username = api_username;
+        Users[user].api_password = api_password;
+
         await tokens.push(Users[user]);
 
         // write the updated users object with Token to the credentials.json file
