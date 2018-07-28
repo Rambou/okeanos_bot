@@ -65,3 +65,6 @@ typings/
 /my.json
 /tokens.json
 /package-lock.json
+
+# vsCode Stuff
+.vsCode
