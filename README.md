@@ -2,6 +2,12 @@
 This is an automated bot using selenium to authenticate your account/s to Okeanos GRNET and retrieve some of the user's information. The tool takes as input an array of your account/s. It generates a file with your account/s API Token keys, so you can use them later if you want.  
 _**Note**: this script is optimized to work and tested for users from University of the Aegean. Probably it will work for all other organization's login pages, but if it doesn't then a little bit of modification may be needed. (I promise it will be few lines of code :D )_
 
+# Run it
+You can download image hosted in Docker Hub
+```
+docker pull rambou/okeanos_bot
+```
+
 # How to use
 IN order to use this tool you need to download a selenium driver. There are two ways in which you can use do this. You can either run selenium with your browser locally or run it remotely.
 
@@ -47,5 +53,5 @@ Now the bot is configurable by using following ENV variables
 Okeanos bot has been "containarized" :p You can now run the docker-compose.yml which creates two services, okeanos_bot and selenium_chrom_standalone. Container also creates a virtual_folder in which you should put the credentials.json. Afer the successfull execution of container credentials file will be updated with the tokens inside.
 To compose serives in docker run
 ```
-docker-compose up -d
+docker-compose up -d --abort-on-container-exit
 ```

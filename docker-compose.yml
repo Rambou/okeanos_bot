@@ -7,8 +7,7 @@ services:
       - /dev/shm:/dev/shm
   okeanos_bot:
     container_name: okeanos_bot
-    image: okeanos_bot
-    build: .
+    image: rambou/okeanos_bot
     depends_on:
       - selenium_chrome
     volumes:
