@@ -39,6 +39,7 @@ Now the bot is configurable by using following ENV variables
 * **CREDENTIALS_FILE**=./credentials.json
 * **SELENIUM_SERVER**=http://localhost:4444/wd/hub
 * **BROWSER**=firefox
+* **LIMIT_CONCURRENT**=10
 
 *set an env variable can be easy for example in bash => export BROWSER=chrome*
 
