@@ -5,6 +5,13 @@ services:
     image: selenium/standalone-chrome:3.13.0-argon
     volumes:
       - /dev/shm:/dev/shm
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+        reservations:
+          cpus: '0.25'
+          memory: 100M
   okeanos_bot:
     container_name: okeanos_bot
     image: rambou/okeanos_bot
@@ -18,5 +25,10 @@ services:
       SELENIUM_SERVER: http://selenium_chrome:4444/wd/hub
       BROWSER: chrome
       LIMIT_CONCURRENT: 10
-    links: 
+    links:
       - selenium_chrome:selenium_chrome
+    deploy:
+      resources:
+        limits:
+          cpus: '0.60'
+          memory: 150M
